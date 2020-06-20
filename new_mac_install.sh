@@ -15,6 +15,13 @@
 # - Brewlet: https://github.com/zkokaja/Brewlet
 #
 
+# Reminder to connect to Mac App Store
+read -p "Are you connected to the Mac App Store (yes/no)? " response
+if test "$response" = "no"; then
+	echo "Please sign in and come back!"
+	exit
+fi
+
 echo "Starting bootstrapping"
 
 # Check for Homebrew, install if we don't have it
@@ -28,7 +35,7 @@ fi
 brew update
 
 # Install apps with Brew
-brew bundle --file ~/Brewfile.newMac 
+brew bundle --file ./Brewfile.newMac 
 
 echo "Configuring macOS..."
 
@@ -48,5 +55,9 @@ defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM HH:mm"
 # Restart processes
 killall Dock
 killall SystemUIServer
+
+# Create folder structure
+echo "Creating folder structure..."
+[[ ! -d Projects ]] && mkdir Projects
 
 echo "Bootstrapping complete"
