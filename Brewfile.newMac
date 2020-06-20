@@ -1,0 +1,33 @@
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+brew "mas"
+brew "tldr"
+brew "wget"
+cask "adobe-creative-cloud"
+cask "appcleaner"
+cask "dropbox"
+cask "google-chrome"
+cask "macpass"
+cask "microsoft-excel"
+cask "microsoft-powerpoint"
+cask "microsoft-word"
+cask "notion"
+cask "rescuetime"
+cask "spotify"
+cask "spotify-now-playing"
+cask "steam"
+cask "zoomus"
+mas "Evernote", id: 406056744
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "Microsoft Remote Desktop", id: 1295203466
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "PDF Squeezer 3", id: 504700302
+mas "Slack", id: 803453959
+mas "Things", id: 904280696
+mas "WhatsApp", id: 1147396723
+mas "WiFi Explorer Lite", id: 1408727408
+mas "見面者-更快地參加會議", id: 1510445899

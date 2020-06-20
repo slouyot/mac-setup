@@ -3,5 +3,4 @@ This project is a set of scripts and config files to setup a new macOS device. I
 
 It uses Homebrew and has been tested on macOS Catalina (10.15).
 
-Start the main script with **~/new_mac_install.sh** and grab a cup of :coffee:.
-
+Start the main script with **~/new_mac_install.sh** and grab a cup of :coffee:
