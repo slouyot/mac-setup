@@ -13,6 +13,7 @@
 # - Logitech Options (bug with caskfile - report a bug!)
 # - Canon MX925 drivers + IJ Scan Utility
 # - Brewlet: https://github.com/zkokaja/Brewlet
+# - Hey: https://hey.com/apps/
 #
 
 # Reminder to connect to Mac App Store
@@ -37,6 +38,12 @@ brew update
 # Install apps with Brew
 brew bundle --file ./Brewfile.newMac 
 
+# Create folder structure
+echo "Creating folder structure..."
+[[ ! -d ~/Projects ]] && mkdir ~/Projects
+[[ ! -d ~/Pictures/Screenshots ]] && mkdir ~/Pictures/Screenshots
+
+# Configure system settings
 echo "Configuring macOS..."
 
 # Enable dock auto-hide and reduce delay
@@ -52,12 +59,11 @@ defaults write com.apple.menuextra.battery ShowPercent YES
 # Apply format for date & time in menu bar
 defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM HH:mm"
 
+# Set up default folder for screenshots
+defaults write com.apple.screencapture location ~/Pictures/Screenshots
+
 # Restart processes
 killall Dock
 killall SystemUIServer
-
-# Create folder structure
-echo "Creating folder structure..."
-[[ ! -d Projects ]] && mkdir Projects
 
 echo "Bootstrapping complete"
