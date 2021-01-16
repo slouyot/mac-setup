@@ -14,6 +14,7 @@
 # - Canon MX925 drivers + IJ Scan Utility
 # - Brewlet: https://github.com/zkokaja/Brewlet
 # - Hey: https://hey.com/apps/
+# - Reeder 4
 #
 
 # Reminder to connect to Mac App Store
