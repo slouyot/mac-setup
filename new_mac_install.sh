@@ -10,11 +10,9 @@
 #
 # - Adobe Lightroom Classic (install from Creative Cloud)
 # - TamperMonkey scripts to enhance the FUT 20 Web App: https://github.com/Mardaneus86/futwebapp-tampermonkey
-# - Logitech Options (bug with caskfile - report a bug!)
 # - Canon MX925 drivers + IJ Scan Utility
 # - Brewlet: https://github.com/zkokaja/Brewlet
 # - Hey: https://hey.com/apps/
-# - Reeder 4
 #
 
 # Reminder to connect to Mac App Store
@@ -43,6 +41,11 @@ brew bundle --file ./Brewfile.newMac
 echo "Creating folder structure..."
 [[ ! -d ~/Projects ]] && mkdir ~/Projects
 [[ ! -d ~/Pictures/Screenshots ]] && mkdir ~/Pictures/Screenshots
+
+# Configure shell
+echo "Configuring shell..."
+cp ./zshrc.newMac ~/.zshrc
+chmod 600 ~/.zshrc
 
 # Configure system settings
 echo "Configuring macOS..."

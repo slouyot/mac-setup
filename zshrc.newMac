@@ -1,0 +1,3 @@
+# Aliases
+alias -g la='ls -a'
+alias -g ll='ls -al'
