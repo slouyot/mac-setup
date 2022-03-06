@@ -12,7 +12,6 @@
 # - TamperMonkey scripts to enhance the FUT 20 Web App: https://github.com/Mardaneus86/futwebapp-tampermonkey
 # - Canon MX925 drivers + IJ Scan Utility
 # - Brewlet: https://github.com/zkokaja/Brewlet
-# - Hey: https://hey.com/apps/
 #
 
 # Reminder to connect to Mac App Store
@@ -36,6 +35,10 @@ brew update
 
 # Install apps with Brew
 brew bundle --file ./Brewfile.newMac 
+
+# Start Brew autoupdate with upgrade
+echo "Starts Brew autoupdate..."
+brew autoupdate start --upgrade
 
 # Create folder structure
 echo "Creating folder structure..."
