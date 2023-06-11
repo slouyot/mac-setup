@@ -22,7 +22,6 @@ cask "evernote"
 cask "flixtools"
 cask "freeze"
 cask "google-chrome"
-cask "iterm2"
 cask "keepassxc"
 cask "kindle"
 cask "macpass"
@@ -51,3 +50,4 @@ mas "Pages", id: 409201541
 mas "PDF Squeezer 3", id: 504700302
 mas "Reeder", id: 1449412482
 mas "Things", id: 904280696
+mas "MindNode", id: 1289197285
