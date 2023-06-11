@@ -1,3 +1,6 @@
+# Extend PATH
+export PATH="/opt/homebrew/bin:$PATH"
+
 # Aliases
 alias -g la='ls -a'
 alias -g ll='ls -al'

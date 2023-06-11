@@ -23,6 +23,17 @@ fi
 
 echo "Starting bootstrapping"
 
+# Add hombrew to PATH
+export PATH="/opt/homebrew/bin:$PATH"
+
+# Check if we are running on an Apple Silicon chipset and install Rosetta 2
+if [ "$(uname -m)" = "arm64" ]; then
+    echo "Running on ARM, installing Rosetta 2..."
+    sudo softwareupdate --install-rosetta
+else
+    echo "No Rosetta 2 needed here."
+fi
+
 # Check for Homebrew, install if we don't have it
 if test ! $(which brew); then
     echo "Installing homebrew..."
@@ -37,8 +48,9 @@ brew update
 brew bundle --file ./Brewfile.newMac 
 
 # Start Brew autoupdate with upgrade
-echo "Starts Brew autoupdate..."
-brew autoupdate start --upgrade
+#echo "Starts Brew autoupdate..."
+#brew autoupdate start --upgrade
+echo "**** Start a Brew upgrade once script is finished ****"
 
 # Create folder structure
 echo "Creating folder structure..."
@@ -54,23 +66,41 @@ chmod 600 ~/.zshrc
 echo "Configuring macOS..."
 
 # Enable dock auto-hide and reduce delay
-defaults write com.apple.dock autohide -int 1
-defaults write com.apple.dock autohide-time-modifier -int 0
+defaults write com.apple.dock "autohide" -bool "true"
+defaults write com.apple.dock "autohide-time-modifier" -float "0"
 
-# Show Bluetooth, Volume icon in menu bar
-defaults write com.apple.systemuiserver menuExtras -array "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" "/System/Library/CoreServices/Menu Extras/Volume.menu"
+# Show Bluetooth, Volume icon in menu bar - Deprecated on macOS 12 Monterey
+#defaults write com.apple.systemuiserver menuExtras -array "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" "/System/Library/CoreServices/Menu Extras/Volume.menu"
 
-# Show battery percentage in menu bar
-defaults write com.apple.menuextra.battery ShowPercent YES
+# Show battery percentage in menu bar - Deprecated on macOS 12 Monterey
+#defaults write com.apple.menuextra.battery ShowPercent YES
 
 # Apply format for date & time in menu bar
-defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM HH:mm"
+defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE d MMM HH:mm\""
+
+# Customize Finder
+defaults write com.apple.finder "ShowPathbar" -bool "true"
+defaults write com.apple.finder "AppleShowAllFiles" -bool "true"
+defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true"
+defaults write com.apple.finder "FXPreferredViewStyle" -string "Nlsv"
+defaults write com.apple.finder "_FXSortFoldersFirst" -bool "true"
 
 # Set up default folder for screenshots
-defaults write com.apple.screencapture location ~/Pictures/Screenshots
+defaults write com.apple.screencapture "location" -string "~/Pictures/Screenshots"
+
+# Enforce TextEdit saving format to TXT (no rich text)
+defaults write com.apple.TextEdit "RichText" -bool "false"
+
+# Cisco Webex - prevent from starting at launch
+defaults write com.cisco.webexmeetingsapp "PTLaunchAtLogin" -float "0"
+
+# Spotify - prevent from starting at launch
+defaults write com.spotify.client "AutoStartSettingIsHidden" -float "0"
 
 # Restart processes
 killall Dock
+killall Finder
 killall SystemUIServer
+killall TextEdit
 
 echo "Bootstrapping complete"
